@@ -36,4 +36,4 @@ uv pip install -r requirements.txt
 |---|---|
 | `requirements.txt` | Bibliothèques Python et leurs versions |
 | `1_une_couche_cachee.ipynb` | Notebook Version 1 : exploration des données (Partie 1 terminée), découpage par volontaire, régression logistique de référence. Réseau à une couche cachée en cours (Partie 2). |
-| `2_reseau_profond.ipynb` | Notebook Version 2 : réseaux plus profonds (3.2 et Partie 4 faites) ; visualisation (t-SNE / UMAP) à venir |
+| `2_reseau_profond.ipynb` | Notebook Version 2 : réseaux plus profonds (parties 3.2 à 6 faites : réseaux profonds, régularisation, test final, t-SNE / UMAP) |

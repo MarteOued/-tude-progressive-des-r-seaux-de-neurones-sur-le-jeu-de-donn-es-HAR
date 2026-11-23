@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><title>Annexes</title><style>
+@page { size: A4; margin: 1.5cm 1.7cm; } body { font-family: "Times New Roman", serif; font-size: 9.5pt; line-height:1.22; text-align: justify; }
+h1 { font-size: 13pt; } h2 { font-size: 10.5pt; margin: 8pt 0 2pt; } figure { margin: 2pt 0 8pt; text-align: center; break-inside: avoid; }
+figure img { max-width: 100%; } figcaption { font-size: 8.4pt; text-align: justify; }</style></head><body>
+<h1>Annexes au rapport (hors des 6 pages) — Martine Ouedraogo</h1>
+<p>Figures complémentaires issues des notebooks exécutés (<i>1_une_couche_cachee.ipynb</i> et <i>2_reseau_profond.ipynb</i>), reproduites telles quelles.</p>
+<figure><img src="figures/annexe_graines_v1.png" style="width:85%"><figcaption><b>Figure A1.</b> Une couche cachée, 9 combinaisons activation × optimiseur : accuracy de validation sur 5 graines (points = graines, bleu = moyenne ± écart-type, trait rouge = régression logistique). Presque toutes les barres d'erreur se chevauchent.</figcaption></figure>
+<figure><img src="figures/annexe_tailles_v1.png" style="width:85%"><figcaption><b>Figure A2.</b> Taille de la couche cachée (16 à 512 neurones) : accuracy de validation (gauche) et perte de validation moyenne au fil des époques (droite).</figcaption></figure>
+<figure><img src="figures/annexe_profondeur.png" style="width:95%"><figcaption><b>Figure A3.</b> Réseaux profonds (1 à 4 couches, 16 configurations d'activations), accuracy de validation sur 5 graines. Seul Sigmoid à 4 couches s'effondre.</figcaption></figure>
+<figure><img src="figures/annexe_regularisation.png" style="width:95%"><figcaption><b>Figure A4.</b> Régularisation (14 configurations) : accuracy de validation sur 5 graines ; ligne rouge = régression logistique, pointillé orange = réseau sans régularisation.</figcaption></figure>
+<figure><img src="figures/annexe_importance.png" style="width:70%"><figcaption><b>Figure A5.</b> Importance par permutation par famille de signal (baisse d'accuracy de validation, 5 graines).</figcaption></figure>
+<figure><img src="figures/annexe_tsne_umap.png" style="width:80%"><figcaption><b>Figure A6.</b> t-SNE (perplexité 30) et UMAP (n_neighbors 15, min_dist 0,1) du test, variables d'entrée (haut) et dernière couche cachée (bas) ; croix = erreurs du réseau.</figcaption></figure>
+<figure><img src="figures/annexe_reglages.png" style="width:80%"><figcaption><b>Figure A7.</b> Sensibilité des projections de la dernière couche cachée à la perplexité (5, 30, 100), à la graine (t-SNE) et à n_neighbors (UMAP : 5, 15, 50). Les groupes se retrouvent, mais leur position et leur distance changent.</figcaption></figure>
+</body></html>

@@ -4,11 +4,11 @@ Projet de Deep Learning, M2 MALIA (2026–2027). Auteure : Martine Ouedraogo. En
 
 ## 1. En deux minutes
 
-**Le problème.** À partir des mesures de l'accéléromètre et du gyroscope d'un smartphone, on veut reconnaître ce que fait la personne : marcher, monter ou descendre un escalier, être assise, debout ou allongée (6 classes).
+**Le problème.** À partir des mesures de l'accéléromètre et du gyroscope d'un smartphone, je veux reconnaître ce que fait la personne : marcher, monter ou descendre un escalier, être assise, debout ou allongée (6 classes).
 
-**Ce qu'on fait.** On part d'un modèle simple (une régression logistique), puis on construit des réseaux de neurones de plus en plus complexes (un MLP, c'est-à-dire un réseau de couches « entièrement connectées ») : plus de neurones, plus de couches, puis des techniques pour limiter le surapprentissage (dropout, Batch Normalization, arrêt précoce...). À chaque étape, on se demande si la complexité apporte vraiment quelque chose.
+**Ce que je fais.** Je pars d'un modèle simple (une régression logistique), puis je construis des réseaux de neurones de plus en plus complexes (un MLP, c'est-à-dire un réseau de couches « entièrement connectées ») : plus de neurones, plus de couches, puis des techniques pour limiter le surapprentissage (dropout, Batch Normalization, arrêt précoce...). À chaque étape, je me demande si la complexité apporte vraiment quelque chose.
 
-**Ce qu'on trouve.**
+**Ce que je trouve.**
 - Plus de neurones ou de couches n'améliore pas la validation au-delà du bruit.
 - La régularisation améliore la validation de 0,8 à 1,8 point, mais presque plus sur le test.
 - Le modèle le mieux classé en validation (0,9723) fait 0,9406 sur le test, sous la régression logistique (0,9535).
@@ -38,7 +38,7 @@ Projet/
     ├── annexes.html             source des annexes
     ├── figures/                 images du rapport (fig1 à fig4) et des annexes (annexe_*)
     ├── generer_figures.py       régénère les images du dossier figures/
-    └── verifier_resultats.py    réentraîne les modèles clés et vérifie qu'on retrouve les chiffres du rapport
+    └── verifier_resultats.py    réentraîne les modèles clés et vérifie que les chiffres du rapport se retrouvent
 ```
 
 **Dans quel ordre lire ?** Notebook 1, puis notebook 2, puis le rapport. Le notebook 2 reprend exactement la préparation des données du notebook 1 (mêmes volontaires, même standardisation), donc leurs scores sont comparables.
@@ -53,7 +53,7 @@ Projet/HAR/test.csv
 ```
 
 Chaque ligne est une **fenêtre** de 2,56 secondes de signal (deux fenêtres consécutives se chevauchent de moitié). Elle est décrite par 561 variables calculées à l'avance (moyenne, écart-type, énergie... de chaque signal), plus deux colonnes :
-- `subject` : le volontaire (un numéro). On ne s'en sert **pas** comme entrée du modèle, seulement pour découper les données.
+- `subject` : le volontaire (un numéro). Je ne m'en sers **pas** comme entrée du modèle, seulement pour découper les données.
 - `Activity` : la classe à prédire.
 
 Le test contient des volontaires qui ne sont **jamais** dans l'entraînement : il mesure donc la capacité à reconnaître des personnes inconnues.
@@ -71,7 +71,7 @@ jupyter lab                        # puis ouvrir un notebook et "Run All"
 
 Points importants :
 - **Lancer Jupyter depuis `Projet/`** : les notebooks lisent `HAR/train.csv` avec un chemin relatif.
-- Les notebooks sont **déjà exécutés** : on peut les lire sans rien relancer. Les relancer entièrement prend de l'ordre de plusieurs dizaines de minutes sur un ordinateur portable (CPU, pas de GPU nécessaire ; durée non mesurée précisément).
+- Les notebooks sont **déjà exécutés** : ils se lisent sans rien relancer. Les relancer entièrement prend de l'ordre de plusieurs dizaines de minutes sur un ordinateur portable (CPU, pas de GPU nécessaire ; durée non mesurée précisément).
 - Les résultats sont reproductibles : toutes les graines aléatoires sont fixées et les versions des bibliothèques sont dans `requirements.txt`. Une autre machine ou une autre version de PyTorch peut donner des différences très faibles.
 
 ## 5. Les conventions du projet (à connaître pour lire le code)
@@ -83,7 +83,7 @@ Points importants :
 | Validation | 5 volontaires entiers : 1, 3, 15, 25, 27 (1801 fenêtres) | Des fenêtres voisines d'un même volontaire se ressemblent : un tirage aléatoire de lignes surestimerait les scores |
 | Entraînement | 16 autres volontaires (5551 fenêtres) | |
 | Test | utilisé **une seule fois par modèle**, en fin de projet (partie 5.2) | Il ne doit servir à choisir aucun réglage |
-| Graines | 5 graines : 0, 1, 2, 3, 4 | On rapporte « moyenne ± écart-type » sur ces 5 entraînements |
+| Graines | 5 graines : 0, 1, 2, 3, 4 | Je rapporte « moyenne ± écart-type » sur ces 5 entraînements |
 | Réglages par défaut des réseaux | Adam, pas 3e-4, mini-batches de 64, 30 époques, perte `CrossEntropyLoss` | Réglage de l'optimiseur fait en partie 2.2 |
 | Métriques | accuracy et F1 macro | Le F1 macro compte chaque classe de la même façon |
 | Règle « différence nette » | un écart entre deux configurations est jugé net s'il dépasse **2 × le plus grand écart-type** des deux | Avec 5 graines, un petit écart peut n'être que du hasard. Ce n'est pas un test statistique |
@@ -168,7 +168,7 @@ Les autres tableaux sont dans les notebooks et le rapport.
 
 - La validation ne contient que 5 volontaires : avec la régression logistique, 10 tirages différents de 5 volontaires donnent de 0,862 à 0,963 d'accuracy. Le choix des volontaires pèse plus que celui de la graine ou d'une petite amélioration du réseau.
 - Le test ne contient que 9 volontaires : un écart de moins d'un point entre deux modèles n'est pas fiable.
-- On n'a pas fait de recherche automatique d'hyperparamètres (elle s'ajusterait aux mêmes 5 volontaires), ni de réseau sur les signaux bruts (absents des fichiers fournis).
+- Je n'ai pas fait de recherche automatique d'hyperparamètres (elle s'ajusterait aux mêmes 5 volontaires), ni de réseau sur les signaux bruts (absents des fichiers fournis).
 - Les explications par les capteurs (gravité, inclinaison du téléphone) et par l'affaiblissement des gradients sont des **hypothèses** cohérentes avec les mesures, pas des démonstrations.
 
 ## 12. Lexique
